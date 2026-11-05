@@ -6,10 +6,10 @@ Cette fiche résume l'emploi de l'outil. Les données sont fictives.
 
 Étapes à suivre :
 
- - Installer Python
+- Installer Python
  - Vérifier la version avec `python --version`
  - Prévoir la version 3.10 ou une plus récente
- - Cloner le dépôt
+- Cloner le dépôt
 
 ## Options de la commande
 
