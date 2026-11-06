@@ -31,14 +31,13 @@ pip install -r requirements.txt
 Windows (PowerShell) :
 
 ```powershell
-git clone ADRESSE_DU_DEPOT pluvio
+git clone https://github.com/Nyroix17/pluvio pluvio
 cd pluvio
 py -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 ```
 
-Remplacez `ADRESSE_DU_DEPOT` par l'adresse de votre dépôt GitHub.
 
 ## Utilisation
 
