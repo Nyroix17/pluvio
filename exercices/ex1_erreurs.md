@@ -13,10 +13,11 @@ Cette fiche résume l'emploi de l'outil. Les données sont fictives.
 
 ## Options de la commande
 
-| Option      | Effet              |
-|-------------|--------------------|
-| `--commune` | filtre par commune |
-| `--mois`    | filtre par mois    |
+| Option          | Effet                                          |
+|-----------------|------------------------------------------------|
+| `--commune`     | filtre par commune                             |
+| `--mois`        | filtre par mois                                |
+| `--par-commune` | Fait un tableau pavec chaque commune existante |
 
 ## Exemple
 
