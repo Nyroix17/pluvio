@@ -21,7 +21,7 @@ aux étudiants et aux développeurs qui veulent explorer ces relevés au termina
 Linux et macOS (bash) :
 
 ```bash
-git clone ADRESSE_DU_DEPOT pluvio
+git clone https://github.com/Nyroix17/pluvio pluvio
 cd pluvio
 python3 -m venv .venv
 source .venv/bin/activate
