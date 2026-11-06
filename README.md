@@ -1,3 +1,11 @@
-# Titre du projet
+# pluvio
 
-À rédiger (Ex.3).
+"Description"
+"Prérequis"
+"Installation"
+"Utilisation"
+"Tests"
+"Arborescence"
+"Contribution"
+"Licence"
+"Contact"
