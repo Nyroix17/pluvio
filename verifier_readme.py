@@ -13,11 +13,6 @@ SECTIONS_ATTENDUES = ("Description", "Prérequis", "Installation",
                       "Contribution", "Licence", "Contact")
 
 
-def sections_manquantes(texte, attendues=SECTIONS_ATTENDUES):
-    """Lister les sections attendues absentes des titres du texte."""
-    titres_normalises = {normaliser(intitule) for _, intitule in titres(texte)}
-    return [section for section in attendues if normaliser(section) not in titres_normalises]
-
 def normaliser(texte):
     """Mettre en minuscules et retirer les accents (« Prérequis » -> « prerequis »)."""
     decompose = unicodedata.normalize("NFD", texte.casefold())
@@ -39,6 +34,12 @@ def titres(texte):
             if m:
                 resultat.append((len(m.group(1)), m.group(2)))
     return resultat
+
+
+def sections_manquantes(texte, attendues=SECTIONS_ATTENDUES):
+    """Lister les sections attendues absentes des titres du texte."""
+    titres_normalises = {normaliser(intitule) for _, intitule in titres(texte)}
+    return [section for section in attendues if normaliser(section) not in titres_normalises]
 
 def blocs_sans_langage(texte):
     # TODO (Ex.4, question 2) : écrire la docstring, puis le corps.
