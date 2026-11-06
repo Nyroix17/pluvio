@@ -42,8 +42,18 @@ def sections_manquantes(texte, attendues=SECTIONS_ATTENDUES):
     return [section for section in attendues if normaliser(section) not in titres_normalises]
 
 def blocs_sans_langage(texte):
-    # TODO (Ex.4, question 2) : écrire la docstring, puis le corps.
-    raise NotImplementedError
+    """Lister les lignes d'ouverture des blocs de code sans langage."""
+    resultat = []
+    dans_un_bloc = False
+    for numero, ligne in enumerate(texte.splitlines(), start=1):
+        ligne = ligne.strip()
+        if not dans_un_bloc and re.fullmatch(r"```[ \t]*", ligne):
+            resultat.append(numero)
+            dans_un_bloc = True
+        elif dans_un_bloc and ligne.startswith("```"):
+            dans_un_bloc = False
+    return resultat
+
 
 
 def main(argv=None):
@@ -55,6 +65,7 @@ def main(argv=None):
     texte = Path(argv[0]).read_text(encoding="utf-8")
     manquantes = sections_manquantes(texte)
     sans_langage = blocs_sans_langage(texte)
+    print(sans_langage); print(manquantes)
     for section in manquantes:
         print(f"Section manquante : {section}")
     for numero in sans_langage:
