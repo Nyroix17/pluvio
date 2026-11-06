@@ -37,23 +37,32 @@ def titres(texte):
 
 
 def sections_manquantes(texte, attendues=SECTIONS_ATTENDUES):
-    """Lister les sections attendues absentes des titres du texte."""
-    titres_normalises = {normaliser(intitule) for _, intitule in titres(texte)}
-    return [section for section in attendues if normaliser(section) not in titres_normalises]
+    """Lister, dans l'ordre de attendues, les sections absentes du texte.
+ 
+    Une section est présente si un titre de n'importe quel niveau contient
+    son nom, sans tenir compte de la casse ni des accents. Les titres situés
+    dans un bloc de code ne comptent pas.
+    """
+    intitules = [normaliser(intitule) for _, intitule in titres(texte)]
+    return [section for section in attendues
+            if not any(normaliser(section) in i for i in intitules)]
 
 def blocs_sans_langage(texte):
-    """Lister les lignes d'ouverture des blocs de code sans langage."""
-    resultat = []
+    """Lister les numéros des lignes qui ouvrent un bloc de code sans langage.
+ 
+    La première ligne du texte porte le numéro 1. Seules les lignes qui
+    ouvrent un bloc délimité par trois accents graves sont examinées : la
+    ligne qui ferme un bloc n'est jamais comptée.
+    """
+    numeros = []
     dans_un_bloc = False
     for numero, ligne in enumerate(texte.splitlines(), start=1):
         ligne = ligne.strip()
-        if not dans_un_bloc and re.fullmatch(r"```[ \t]*", ligne):
-            resultat.append(numero)
-            dans_un_bloc = True
-        elif dans_un_bloc and ligne.startswith("```"):
-            dans_un_bloc = False
-    return resultat
-
+        if ligne.startswith("```"):
+            if not dans_un_bloc and not ligne[3:].strip():
+                numeros.append(numero)
+            dans_un_bloc = not dans_un_bloc
+    return numeros
 
 
 def main(argv=None):
