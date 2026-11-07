@@ -74,7 +74,6 @@ def main(argv=None):
     texte = Path(argv[0]).read_text(encoding="utf-8")
     manquantes = sections_manquantes(texte)
     sans_langage = blocs_sans_langage(texte)
-    print(sans_langage); print(manquantes)
     for section in manquantes:
         print(f"Section manquante : {section}")
     for numero in sans_langage:
