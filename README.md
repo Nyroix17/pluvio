@@ -110,8 +110,19 @@ Options de la commande (aide complète : `python -m pluvio.cli --help`) :
 | `--mois AAAA-MM` | un mois, par exemple `2025-01` | garde seulement les relevés de ce mois |
 | `--par-commune` | aucune | affiche le total de pluie de chaque commune, classé par nom |
 
-Si aucun relevé ne correspond aux filtres, l'outil affiche
-« Aucun relevé pour ces critères. » et se termine avec le code 1.
+L'outil se termine avec un code de sortie qui indique le résultat :
+
+- 0 : la commande a réussi ;
+- 1 : aucun relevé ne correspond aux filtres, l'outil affiche
+  « Aucun relevé pour ces critères. » ;
+- 2 : le fichier CSV est introuvable ou mal formé, l'outil affiche un
+  message qui commence par « Erreur : ».
+
+Exemple avec un fichier qui n'existe pas :
+
+```text
+Erreur : [Errno 2] No such file or directory: 'absent.csv'
+```
 
 ## Tests
 
