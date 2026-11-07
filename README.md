@@ -177,5 +177,5 @@ Ce projet est distribué sous licence MIT : voir le fichier [LICENSE](LICENSE).
 
 ## Contact
 
-Pour une question ou un bogue, ouvrez une issue dans l'onglet « Issues » du
+Pour une question ou un bogue, ouvrez une issue dans l'onglet « [Issues](https://github.com/Nyroix17/pluvio/issues) » du
 dépôt GitHub du projet.
